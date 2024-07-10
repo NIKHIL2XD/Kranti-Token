@@ -1,12 +1,11 @@
-// SPDX-License-Identifier: GPL-3.0
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
 
-pragma solidity >=0.7.0 <0.9.0;
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol";
 
-import "contracts/contracts/token/ERC20/ERC20.sol";
-
-contract MyToken is ERC20 { 
-
-    constructor () ERC20("Kranti", "KRT") {
+contract MyToken is ERC20, ERC20Permit {
+    constructor() ERC20("Kranti", "KRT") ERC20Permit("Kranti") {
         _mint(msg.sender, 1000000 * 10 ** decimals());
     }
-}
+    }
